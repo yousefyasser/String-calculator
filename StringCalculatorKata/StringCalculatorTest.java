@@ -58,4 +58,10 @@ class StringCalculatorTest {
 		
 		assertEquals("negatives not allowed: -1 -2", exception.getMessage());
 	}
+	
+	@Test
+	void testAddNumbersBiggerThan1000() throws Exception{
+		result = calc.Add("2,1001");
+		assertEquals(2, result);
+	}
 }
