@@ -19,4 +19,10 @@ class StringCalculatorTest {
         assertEquals(0, result);
     }
 	
+	@Test
+    void testAddOneNumber() {
+    	int result = calc.Add("1");
+        assertEquals(1, result);
+    }
+	
 }
