@@ -49,4 +49,10 @@ class StringCalculatorTest {
 		result = calc.Add("//;\n1;2");
 		assertEquals(3, result);
 	}
+	
+	@Test
+	void testAddWithNegativeNumbers() {
+		result = calc.Add("-1,3");
+		assertEquals("negatives not allowed: -1", result);
+	}
 }
