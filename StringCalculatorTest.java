@@ -25,4 +25,10 @@ class StringCalculatorTest {
         assertEquals(1, result);
     }
 	
+	@Test
+    void testAddTwoNumbers() {
+    	int result = calc.Add("1,2");
+        assertEquals(3, result);
+    }
+	
 }
