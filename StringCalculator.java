@@ -9,7 +9,10 @@ public class StringCalculator {
 			int sum = 0;
 			
 			for(int i = 0; i < separatedNumbers.length; i++) {
-				sum += Integer.parseInt(separatedNumbers[i]);
+				String[] newLines = separatedNumbers[i].split("\n");
+				for(int j = 0; j < newLines.length; j++) {
+					sum += Integer.parseInt(newLines[j]);
+				}
 			}
 			
 			return sum;
