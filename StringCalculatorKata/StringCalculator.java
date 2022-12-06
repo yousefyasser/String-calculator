@@ -26,9 +26,10 @@ public class StringCalculator {
 				for (int j = 0; j < newLines.length; j++) {
 					if(newLines[j] != "") {
 						int num = Integer.parseInt(newLines[j]);
+						
 						if(num < 0) {
 							negatives += " " + num;
-						}else sum += num;
+						}else if(num < 1001) sum += num;
 					}
 					
 				}
