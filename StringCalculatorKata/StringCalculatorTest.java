@@ -10,49 +10,52 @@ class StringCalculatorTest {
 	int result;
 	
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp(){
 		calc = new StringCalculator();
 	}
 
 	@Test
-    void testAddEmptyString() {
+    void testAddEmptyString() throws Exception{
     	result = calc.Add("");
         assertEquals(0, result);
     }
 	
 	@Test
-    void testAddOneNumber() {
+    void testAddOneNumber() throws Exception{
     	result = calc.Add("1");
         assertEquals(1, result);
     }
 	
 	@Test
-    void testAddTwoNumbers() {
+    void testAddTwoNumbers() throws Exception{
     	result = calc.Add("1,2");
         assertEquals(3, result);
     }
 	
 	@Test
-    void testAddManyNumbers() {
+    void testAddManyNumbers() throws Exception{
     	result = calc.Add("1,2,3,4,5");
         assertEquals(15, result);
     }
 	
 	@Test
-	void testAddNewLines() {
+	void testAddNewLines() throws Exception{
 		result = calc.Add("1\n2,3");
 		assertEquals(6, result);
 	}
 	
 	@Test
-	void testDifferentDelimiters() {
+	void testDifferentDelimiters() throws Exception {
 		result = calc.Add("//;\n1;2");
 		assertEquals(3, result);
 	}
 	
 	@Test
-	void testAddWithNegativeNumbers() {
-		result = calc.Add("-1,3");
-		assertEquals("negatives not allowed: -1", result);
+	void testAddWithNegativeNumbers() throws Exception{
+		Throwable exception = assertThrows(Exception.class, () -> {
+			   calc.Add("-1,-2,3");
+			  });
+		
+		assertEquals("negatives not allowed: -1 -2", exception.getMessage());
 	}
 }
