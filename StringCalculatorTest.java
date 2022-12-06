@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class StringCalculatorTest {
 	StringCalculator calc;
+	int result;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -37,4 +38,9 @@ class StringCalculatorTest {
         assertEquals(15, result);
     }
 	
+	@Test
+	void testAddNewLines() {
+		int result = calc.Add("1\n2,3");
+		assertEquals(6, result);
+	}
 }
