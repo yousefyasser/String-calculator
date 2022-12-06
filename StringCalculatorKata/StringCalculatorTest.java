@@ -64,4 +64,10 @@ class StringCalculatorTest {
 		result = calc.Add("2,1001");
 		assertEquals(2, result);
 	}
+	
+	@Test
+	void testDelimitersOfUnknownLength() throws Exception{
+		result = calc.Add("//[***]\n1***2***3");
+		assertEquals(6, result);
+	}
 }
