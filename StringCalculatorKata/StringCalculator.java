@@ -8,33 +8,45 @@ public class StringCalculator {
 		else if(numbers.length() == 1) return Integer.parseInt(numbers);
 		else {
 			boolean flag = false;
-			String separator = ",";
+			int sum = 0;
+			String separator = "", negatives = "";
+			
 			
 			if(numbers.substring(0, 2).equals("//")) {
+				if(numbers.charAt(2) == '[') 
+					for(int i = 3; i < numbers.length() && numbers.charAt(i) != ']'; i++) 
+						separator += numbers.charAt(i);
+				else
+					separator = numbers.charAt(2)+"";
+				
 				flag = true;
-				separator = numbers.charAt(2)+"";
-			}
+			}else
+				separator = ",";
 			
-			String negatives = "";
-			String[] separatedNumbers = numbers.split(separator);
-			int sum = 0;
+			String[] separatedNumbers = numbers.split("\\" + separator);
 			
 			for(int i = 0; i < separatedNumbers.length; i++) {
 				if(i == 0 && flag) i++;
 				
 				String[] newLines = separatedNumbers[i].split("\n");
 				for (int j = 0; j < newLines.length; j++) {
-					if(newLines[j] != "") {
+					try {
 						int num = Integer.parseInt(newLines[j]);
 						
-						if(num < 0) {
+						if(num < 0) 
 							negatives += " " + num;
-						}else if(num < 1001) sum += num;
+						else if(num < 1001) 
+							sum += num;
+					}catch(Exception e){
+						continue;
 					}
 					
 				}
 			}
-			if(negatives.length() != 0) throw new Exception("negatives not allowed:" + negatives);
+			
+			if(negatives.length() != 0) 
+				throw new Exception("negatives not allowed:" + negatives);
+			
 			return sum;
 		}
 	}
