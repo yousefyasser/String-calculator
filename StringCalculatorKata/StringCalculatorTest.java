@@ -70,4 +70,10 @@ class StringCalculatorTest {
 		result = calc.Add("//[**]\n1**2**3");
 		assertEquals(6, result);
 	}
+	
+	@Test 
+	public void testMultipleDelimiters() throws Exception{
+		result = calc.Add("//[*][%]\n1*2%3");
+		assertEquals(6, result);
+	}
 }
