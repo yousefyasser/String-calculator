@@ -72,13 +72,13 @@ class StringCalculatorTest {
 	}
 	
 	@Test 
-	public void testMultipleDelimiters() throws Exception{
+	void testMultipleDelimiters() throws Exception{
 		result = calc.Add("//[*][%]\n1*2%3");
 		assertEquals(6, result);
 	}
 	
 	@Test 
-	public void testMultipleDelimitersOfLengthGreaterThanOne() throws Exception{
+	void testMultipleDelimitersOfLengthGreaterThanOne() throws Exception{
 		result = calc.Add("//[**][%%]\n1**2%%3");
 		assertEquals(6, result);
 	}
